@@ -1,9 +1,20 @@
 package Metier;
 
 import DAO.IDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MetierImpl implements IMetier{
+//    @Autowired
+//@Qualifier in case the the package contains more than a component to be injected
+
     private IDao dao; //couplage faible
+
+    public MetierImpl(IDao dao) {
+        this.dao = dao;
+    }
+
     @Override
     public double calcul() {
         double d = dao.getData();
