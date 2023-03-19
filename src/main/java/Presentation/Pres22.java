@@ -4,23 +4,23 @@ import DAO.IDao;
 import Metier.IMetier;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Scanner;
 
-public class Pres2 {
+public class Pres22 {
     public static void main(String[] args) throws Exception{
-        /* delarer les class a utilise dans le fichier config.txt */
+        /* saisi les couche a utilise lors de demarrage de l'app */
 
         // DaoImpl dao = new DaoImpl()
         // get the dao class name
-        Scanner scanner = new Scanner(new File("src/config.txt"));
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("donner la couche dao: ");
         String daoClassName = scanner.nextLine();
         Class cDao = Class.forName(daoClassName);
         IDao dao = (IDao) cDao.getConstructor().newInstance(); //instanciation dynamique
 
         //MetierImpl metier = new MetierImpl();
+        System.out.print("donner la couche metier: ");
         String metierClassName = scanner.nextLine();
         Class cMetier = Class.forName(metierClassName);
         IMetier metier = (IMetier) cMetier.getConstructor().newInstance();
